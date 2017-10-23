@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////
-//   																			  //
+//   										  //									  //
 //  Algoritma Akış Diagram Sembolleri                                             //
-//  																			  //
+//  										  //									  //
 //  -Başla/Bitir                                                                  //
 //  -Genel Girdi/Çıktı                                                            //
-//  -Genel İşlem																  //
+//  -Genel İşlem								  //								  //
 //  -Denetim(Karar)                                                               //
-//  -El ile Girdi(Klavye)														  //
+//  -El ile Girdi(Klavye)							  //							  //
 //                                                                                //
-//                                  m.y software();          					  //
+//                                  m.y software();          			  //
 //                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -136,8 +136,8 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		case 2:
 		my_tik=0;
 		s2_index = this.b_index;
-		bag_2_x = (this.x+(this.genislik/2)-10);
-		bag_2_y = (this.y+this.yukseklik+1);
+		bag_2_x = this._alt_bag_x;
+		bag_2_y = this._alt_bag_y;
 		this._alt_üst = 2;
 		s_iki_d = 2;
         _bag.push(new sembol_bagla(bag_1_x,bag_1_y,bag_2_x,bag_2_y,s1_index,s2_index,s_bir_d,s_iki_d));
