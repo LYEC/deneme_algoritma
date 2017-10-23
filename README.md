@@ -11,6 +11,8 @@
                  
                  bugs(){
                  -şekiller iç içe geldiğinde birlikte hareket ediyor
-                 -çizilen şekillerin kenarları düzgün değil kalınlaşıyor
                  -bağlama çizgilerinin okları yok ve düzgün değil
+                 }
+                 fixed(){
+                 -çizilen şekillerde bozulma düzeldi
                  }
