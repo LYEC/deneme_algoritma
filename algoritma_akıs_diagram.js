@@ -14,6 +14,7 @@
 
 var _kutup = [];
 var _islem = [];
+var _text_deneme =[];
 var bag_1_x = 0;
 var bag_2_x = 0;
 var bag_1_y = 0;
@@ -50,6 +51,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	this._alt_üst = 0;
 	index=index+1;
 	this.b_index = index;
+	//_text_deneme[this.b_index] = createP(this.yazi);
 
 	this.ciz = function(){
 		if(this.bag_acik==1){
@@ -59,17 +61,28 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 			stroke(this.renk_alt);
 			rect(this._alt_bag_x,this._alt_bag_y,5,5);
 		}
+		textFont("Arial",10);
+		textStyle("NORMAL");
 		switch(this.alg_sembol){
 		case 1:
+        noStroke();
 		noFill();
+		fill(50);
+		text(this.yazi, this.x+5, this.y+2,this.genislik,this.yukseklik);
 		stroke(0);
+		noFill();
 		rect(this.x,this.y,this.genislik,this.yukseklik);
+		//_text_deneme[this.b_index].position(this.x+5,this.y+2);
 		this._üst_bag_x = (this.x+(this.genislik/2));
 		this._üst_bag_y = (this.y-6);
 		this._alt_bag_x = (this.x+(this.genislik/2));
 		this._alt_bag_y = (this.y+this.yukseklik+1);
 		break;
 		case 2:
+		noStroke();
+		noFill();
+		fill(50);
+		text(this.yazi, this.x+5, this.y+2,this.genislik,this.yukseklik);
 		noFill();
 		stroke(0);
 		line(this.x,this.y,this.x+this.genislik,this.y);
@@ -82,6 +95,10 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._alt_bag_y = (this.y+this.yukseklik+1);
 		break;
 		case 3:
+		noStroke();
+		noFill();
+		fill(50);
+		text(this.yazi, this.x+30, this.y+18,this.genislik,this.yukseklik);
 		noFill();
 		stroke(0);
 		rect(this.x, this.y, this.genislik, this.yukseklik, 20);
@@ -152,7 +169,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		if(this.secildi==1){
 		this.x=mouseX-this.sür_x;
 		this.y=mouseY-this.sür_y;
-		background(255);
+		//background(255);
 		switch(this.alg_sembol){
 	    case 1:
 		this._üst_bag_x = (this.x+(this.genislik/2));
@@ -193,7 +210,3 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	}
 	}
 }
-	
-
-
-
