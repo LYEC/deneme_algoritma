@@ -27,7 +27,8 @@ var s2_index = 0;
 var s_bir_d = 0;
 var s_iki_d = 0;
 var index = -1;
-
+var b_ok = 0;
+var beyaz_balina = 0;
 
 function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	
@@ -49,10 +50,47 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	this._alt_bag_x = (this.x+(this.genislik/2));
 	this._alt_bag_y = (this.y+this.yukseklik+1);
 	this._alt_üst = 0;
+	this.bagli = 0;
 	index=index+1;
 	this.b_index = index;
+	this.g_isim = 'NULL';
+	this.d_index = -1;
 	//_text_deneme[this.b_index] = createP(this.yazi);
 
+	this.d_index_d = function(index){
+		this.d_index = index;
+	}
+	
+	this.yazi_degis = function(yazi){
+		this.yazi = yazi;
+	}
+	
+	this.g_isim_oku = function(){
+		return this.g_isim;
+	}
+	
+	this.gorev = function(){
+		switch(this.alg_sembol){
+			case 1:
+			beyaz_balina = this.d_index;
+			break;
+			case 2:
+			if(b_ok==1){
+			print(degiskenler[beyaz_balina]+'='+degisken_icerik[beyaz_balina]);
+			}
+			break;
+			case 3:
+			if(this.yazi=='BAŞLAT'){
+			b_ok = 1;
+			}
+			if(this.yazi=='DURDUR'){
+			b_ok = 0;	
+			}
+			break;	
+		}
+		
+	}
+	
 	this.ciz = function(){
 		if(this.bag_acik==1){
 			noFill();
@@ -77,6 +115,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._üst_bag_y = (this.y-6);
 		this._alt_bag_x = (this.x+(this.genislik/2));
 		this._alt_bag_y = (this.y+this.yukseklik+1);
+		this.g_isim = 'İŞLEM_' + this.b_index;
 		break;
 		case 2:
 		noStroke();
@@ -93,12 +132,13 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._üst_bag_y = (this.y-6);
 		this._alt_bag_x = (this.x+(this.genislik/2)-10);
 		this._alt_bag_y = (this.y+this.yukseklik+1);
+		this.g_isim = 'GİRİŞ/ÇIKIŞ_' + this.b_index;
 		break;
 		case 3:
 		noStroke();
 		noFill();
 		fill(50);
-		text(this.yazi, this.x+30, this.y+18,this.genislik,this.yukseklik);
+		text(this.yazi, this.x+32, this.y+14,this.genislik,this.yukseklik);
 		noFill();
 		stroke(0);
 		rect(this.x, this.y, this.genislik, this.yukseklik, 20);
@@ -106,6 +146,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._üst_bag_y = (this.y-6);
 		this._alt_bag_x = (this.x+(this.genislik/2));
 		this._alt_bag_y = (this.y+this.yukseklik+1);
+		this.g_isim = 'BAŞLA/DURDUR_' + this.b_index;
 		break;
 		}
 	}
@@ -136,6 +177,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._alt_üst = 1;
 		s_iki_d = 1;
 		_bag.push(new sembol_bagla(bag_1_x,bag_1_y,bag_2_x,bag_2_y,s1_index,s2_index,s_bir_d,s_iki_d));
+		this.bagli = 1;
 		break;	
 		}
 	    this.renk_üst = color(255, 204, 0);
@@ -158,6 +200,7 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 		this._alt_üst = 2;
 		s_iki_d = 2;
         _bag.push(new sembol_bagla(bag_1_x,bag_1_y,bag_2_x,bag_2_y,s1_index,s2_index,s_bir_d,s_iki_d));
+		this.bagli = 1;
 		break;	
 		}
      	this.renk_alt = color(255, 204, 0);
