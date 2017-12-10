@@ -4,6 +4,9 @@ var arac_kutusu_c;
 var ozellik_menu;
 var deneme_p;
 var deneme_sim;
+var orta_canvas;
+
+var _konsol;
 
 function deneme_line (x1,x2,y1,y2){
 	background(255);
@@ -13,7 +16,7 @@ function deneme_line (x1,x2,y1,y2){
 }
 
 function setup(){
-	createCanvas(1366,768);
+	orta_canvas = createCanvas(968,662);
 	background(255);
 	_deneme[0]=new algroitma_sema(100,100,40,100,1,"mustafa yılmaz deneme");
 	_deneme[1]=new algroitma_sema(200,200,40,100,1,"şunu bi em");
@@ -23,16 +26,28 @@ function setup(){
 	_deneme[3]=new algroitma_sema(400,400,40,100,3,"DURDUR");
 	_deneme[4]=new algroitma_sema(500,500,40,100,2,"asdas4 asdas dasda sd");
 	_deneme[5]=new algroitma_sema(800,500,40,100,1,"dddd");
+	_deneme[6]=new algroitma_sema(800,300,40,100,2,"xdsad");
 	deneme_sim = new simülasyon();
+	_konsol = new konsol(1110,380);
+    orta_canvas.position(0,0);
+	orta_canvas.class('orta_canvas');
+	
 	//deneme_sim.analiz();
 	ozellik_menu.ciz();
+	print(displayWidth);
+	print(displayHeight);
 }
 
 function draw(){
 //background(255);
 clear();
+//background(color(192,192,192));
+
 arac_kutusu_c.ciz();	
 //deneme_sim.baslat_durdur_ara();
+
+//rect(100,100,100,100,10);
+
 for(let a = 0 ; a<_deneme.length; a++){
 	_deneme[a].ciz();
 }
