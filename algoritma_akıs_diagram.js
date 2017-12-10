@@ -28,7 +28,8 @@ var s_bir_d = 0;
 var s_iki_d = 0;
 var index = -1;
 var b_ok = 0;
-var beyaz_balina = 0;
+var onaylanan_d = [];
+
 
 function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	
@@ -50,6 +51,11 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	this._alt_bag_x = (this.x+(this.genislik/2));
 	this._alt_bag_y = (this.y+this.yukseklik+1);
 	this._alt_üst = 0;
+	this.d_ismi = 'NULL';
+	this.d_deger_1 = 0;
+	this.d_deger_2 = 0;
+	this._islem = 0;
+	this._islem_index = -1;
 	this.bagli = 0;
 	index=index+1;
 	this.b_index = index;
@@ -57,12 +63,26 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	this.d_index = -1;
 	//_text_deneme[this.b_index] = createP(this.yazi);
 
-	this.d_index_d = function(index){
+	this._islem_d = function(islem){
+		this._islem = islem;
+	}
+	
+	this.d_deger_degis = function(d1,d2){
+		this.d_deger_1 = d1;
+		this.d_deger_2 = d2;
+	}
+	
+	this.d_index_d = function(index,isim){
 		this.d_index = index;
+		this.d_ismi = isim;
 	}
 	
 	this.yazi_degis = function(yazi){
 		this.yazi = yazi;
+	}
+	
+	this._islem_index_d = function(d){
+		this._islem_index = d;
 	}
 	
 	this.g_isim_oku = function(){
@@ -72,11 +92,11 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	this.gorev = function(){
 		switch(this.alg_sembol){
 			case 1:
-			beyaz_balina = this.d_index;
+			onaylanan_d[this.d_index] = degisken_icerik[this.d_index];
 			break;
 			case 2:
 			if(b_ok==1){
-			print(degiskenler[beyaz_balina]+'='+degisken_icerik[beyaz_balina]);
+			_konsol.yaz('=> '+onaylanan_d[this._islem_index]);
 			}
 			break;
 			case 3:
@@ -253,3 +273,4 @@ function algroitma_sema(x,y,yukseklik,genislik,alg_sembol,yazi){
 	}
 	}
 }
+	
