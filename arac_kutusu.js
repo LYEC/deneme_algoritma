@@ -36,7 +36,8 @@ function arac_kutusu (x,y){
 			if(this.tik_sayac==0){
 			this.renk2=150;
 			this.tik_sayac++;
-                       deneme_sim.analiz();	
+            deneme_sim.analiz();	
+			_konsol.temizle();
 			bag_uzunluk = baglar_index.length;
 			sim_timer = setInterval(deneme_sim.simüle,2000);
 		    }else{
