@@ -1,7 +1,7 @@
-var dddd=0;
-var cuk = -1;
+var _tekrar=0;
+var _b_index = -1;
 var bag_uzunluk = 0;
-var ciz_baba = 0;
+var _lyec_sim = 0;
 var baglar_index = [];
 
 function simülasyon(){
@@ -28,12 +28,10 @@ function simülasyon(){
 			for (let a = 0; a<baglar_index.length;a++){
 			for(let baglarda_ara = 0; baglarda_ara<_bag.length;baglarda_ara++){
 				if(_bag[baglarda_ara].s_bir_index == baglar_index[this.ed]){
-						if(_bag[baglarda_ara].s_bir_d == 2){
-							if(_bag[baglarda_ara].s_iki_d==1){
+						if((_bag[baglarda_ara].s_bir_d == 2 && _bag[baglarda_ara].s_iki_d==1) || (_bag[baglarda_ara].s_bir_d == 1 && _bag[baglarda_ara].s_iki_d==2)){
 								this.ed++;
 								baglar_index[this.ed] = _bag[baglarda_ara].s_iki_index;
 								break;
-							}
 						}
 				}
 			}
@@ -41,26 +39,26 @@ function simülasyon(){
 		}
 	}
 	this.simüle = function(){
-		if(dddd<bag_uzunluk){
-		ciz_baba=1;	
-		_deneme[baglar_index[dddd]].gorev();
-		print(_deneme[baglar_index[dddd]]);
-		print(dddd);
-		dddd++;
-		cuk++;
+		if(_tekrar<bag_uzunluk){
+		_lyec_sim=1;	
+		_deneme[baglar_index[_tekrar]].gorev();
+		print(_deneme[baglar_index[_tekrar]]);
+		print(_tekrar);
+		_tekrar++;
+		_b_index++;
 		}else{
-			ciz_baba=0;
+			_lyec_sim=0;
 			clearInterval(sim_timer);
-			dddd=0;
-			cuk=-1;
+			_tekrar=0;
+			_b_index=-1;
 		}
 	}
 
     this.ciz = function(){
-		if(ciz_baba==1){
+		if(_lyec_sim==1){
 		noFill();
 		stroke(color(255, 204, 0));
-		rect(_deneme[baglar_index[cuk]].x-10,_deneme[baglar_index[cuk]].y-10,_deneme[baglar_index[cuk]].genislik + 20,_deneme[baglar_index[cuk]].yukseklik+20);
+		rect(_deneme[baglar_index[_b_index]].x-10,_deneme[baglar_index[_b_index]].y-10,_deneme[baglar_index[_b_index]].genislik + 20,_deneme[baglar_index[_b_index]].yukseklik+20);
 		stroke(0);
 		}
 	}	
